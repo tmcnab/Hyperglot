@@ -1,0 +1,42 @@
+{
+  "name": "Hyperglot",
+  "version": "0.0.1",
+  "description": "IDE for formulating programming languages",
+  "main": "index.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tmcnab/Hyperglot.git"
+  },
+  "keywords": [
+    "PEG",
+    "grammar",
+    "compiler",
+    "generator",
+    "IDE"
+  ],
+  "author": "@tmcnab <tristan.j.mcnab@gmail.com>",
+  "license": "CC-BY-NC-SA <http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode>",
+  "bugs": {
+    "url": "https://github.com/tmcnab/Hyperglot/issues"
+  },
+  "dependencies": {
+    "escodegen": "0.0.27"
+  },
+  "window": {
+    "title": "PEG Studio",
+    "icon": "link.png",
+    "toolbar": true,
+    "frame": true,
+    "width": 1000,
+    "height": 600,
+    "position": "mouse",
+    "min_width": 1000,
+    "min_height": 600
+  }
+}
