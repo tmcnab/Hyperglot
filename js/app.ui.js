@@ -8,10 +8,10 @@ app.ui = (function (self)
 		});
 	}
 
-
 	function onResize() {
 		app.grammar.resize();
 		app.language.resize();
+		app.generated.resize();
 	}
 
 	self.init = function () {
@@ -19,6 +19,7 @@ app.ui = (function (self)
 
 		app.grammar.init();
 		app.language.init();
+		app.generated.init();
 
 		$(window).resize(onResize);
 		onResize();

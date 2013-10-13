@@ -19,3 +19,7 @@ body > .tab-content {
 .navbar {
 	min-height: 0;
 }
+
+html, body {
+	background-color: 000;
+}

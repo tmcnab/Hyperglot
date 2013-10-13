@@ -61,16 +61,18 @@ app.grammar = (function (self)
 
 	self.init = function () {
 		editor = ace.edit('grammarEditor');
-		editor.setTheme("ace/theme/xcode");
+		editor.setTheme("ace/theme/tomorrow_night_bright");
 
 		var session = editor.getSession();
+		session.setMode("ace/mode/javascript");
+		session.setUseWorker(false);
 		session.setValue(localStorage.getItem('app.grammar.text') || DEFAULT_TEXT);
 		session.on('change', onChange);
 		buildParser();
 	};
 
 	self.resize = function () {
-		$('#grammarEditor').height($(window).height() - 30);
+		$('#grammarEditor').height($(window).height() - 60);
 	};
 
 	//========================================================================

@@ -7,16 +7,37 @@
 	<link rel="stylesheet" href="css/jsontree.css" />
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<small class="navbar-text" id="messages">Ready.</small>
-		<ul class="nav navbar-nav navbar-right">
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<ul class="nav navbar-nav">
 			<li class="active">
-				<a data-toggle="tab" data-target="#editorPane"><span class="glyphicon glyphicon-filter"></span></a></li>
-			<li><a data-toggle="tab" data-target="#languagePane"><span class="glyphicon glyphicon-comment"></span></a></li>
-			<li><a data-toggle="tab" data-target="#outputPane"><span class="glyphicon glyphicon-tree-conifer"></span></a></li>
-			<li><a data-toggle="tab" data-target="#exportPane"><span class="glyphicon glyphicon-export"></span></a></li>
-			<li><a data-toggle="tab" data-target="#docPane"><span class="glyphicon glyphicon-book"></span></a></li>
-			<li><a data-toggle="tab" data-target="#settingsPane"><span class="glyphicon glyphicon-cog"></span></a></li>
+				<a data-toggle="tab" data-target="#editorPane">
+					<span class="glyphicon glyphicon-filter"></span> Syntax
+				</a>
+			</li>
+			<li>
+				<a data-toggle="tab" data-target="#languagePane">
+					<span class="glyphicon glyphicon-comment"></span> Input
+				</a>
+			</li>
+			<li><a data-toggle="tab" data-target="#outputPane">
+					<span class="glyphicon glyphicon-tree-conifer"></span> Output
+				</a>
+			</li>
+			<li>
+				<a data-toggle="tab" data-target="#exportPane">
+					<span class="glyphicon glyphicon-export"></span> Export
+				</a>
+			</li>
+			<li>
+				<a data-toggle="tab" data-target="#docPane">
+					<span class="glyphicon glyphicon-book"></span> Docs
+				</a>
+			</li>
+			<li>
+				<a data-toggle="tab" data-target="#settingsPane">
+					<span class="glyphicon glyphicon-cog"></span> Settings
+				</a>
+			</li>
 		</ul>
 	</nav>
 	<div class="tab-content">
@@ -80,6 +101,9 @@
 			</div>
 		</section>
 	</div>
+	<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+		<small class="navbar-text" id="messages">Ready.</small>
+	</nav>
 	<script src="js/jquery.min.js"></script>
 	<script src="bs/js/bootstrap.min.js"></script>
 	<script src="ace/ace.js"></script>

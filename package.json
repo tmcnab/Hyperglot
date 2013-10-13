@@ -29,9 +29,9 @@
     "escodegen": "0.0.27"
   },
   "window": {
-    "title": "PEG Studio",
+    "title": "Hyperglot",
     "icon": "link.png",
-    "toolbar": true,
+    "toolbar": false,
     "frame": true,
     "width": 1000,
     "height": 600,

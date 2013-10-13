@@ -31,7 +31,7 @@ app.language = (function (self)
 
 	self.init = function () {
 		editor = ace.edit("inputEditor");
-		editor.setTheme("ace/theme/xcode");
+		editor.setTheme("ace/theme/tomorrow_night_bright");
 
 		var session = editor.getSession();
 		session.setValue(localStorage.getItem('app.language.text') || DEFAULT_TEXT);
@@ -41,7 +41,7 @@ app.language = (function (self)
 
 
 	self.resize = function () {
-		$('#inputEditor').height($(window).height() - 30);
+		$('#inputEditor').height($(window).height() - 60);
 	};
 
 	return self;	
