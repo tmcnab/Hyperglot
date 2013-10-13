@@ -11,7 +11,7 @@ app.language = (function (self)
 		parse();
 	}
 
-	function parse () {
+	self.parse = function () {
 		var text = editor.getSession().getValue();
 		
 		try {
