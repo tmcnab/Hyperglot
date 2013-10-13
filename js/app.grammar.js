@@ -1,7 +1,7 @@
 app.grammar = (function (self) 
 {
 	var DEFAULT_TEXT = "Program\n  = \n  { return ast.Program([]) }\n";
-	var astSource = 
+	/*var astSource = 
 "var ast = (function (self) 									\
 {																\
 	self.ArrayExpression = function (elements) {				\
@@ -30,7 +30,8 @@ app.grammar = (function (self)
 	};															\
 																\
 	return self;												\
-})(ast || {});\n";
+})(ast || {});\n";*/
+	var astSource = "var ast = require('ast-types').builders;";
 
 	var editor = null;
 	self.parser = null;
@@ -75,8 +76,7 @@ app.grammar = (function (self)
 		$('#grammarEditor').height($(window).height() - 60);
 	};
 
-	//========================================================================
-	// Grammar Editor Options
+
 	self.options = {};
 	self.options.trackLineAndColumn = function (bool) {
 		if (bool) {

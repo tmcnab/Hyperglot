@@ -26,7 +26,8 @@
     "url": "https://github.com/tmcnab/Hyperglot/issues"
   },
   "dependencies": {
-    "escodegen": "0.0.27"
+    "escodegen": "0.0.27",
+    "ast-types": "~0.3.5"
   },
   "window": {
     "title": "Hyperglot",
