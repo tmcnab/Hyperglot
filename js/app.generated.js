@@ -3,11 +3,12 @@ app.generated = (function (self)
 	var leftPaneSelector = '#outputPaneLeft';
 	var rightPaneSelector = '#outputPaneRight';
 	var escodegen = require('escodegen');
-
 	var codegenEditor = null;
+	var astEditor = null;
+
 
 	self.setAST = function (ast) {
-		$(leftPaneSelector).html(jsonTree.create(ast));
+		astEditor.getSession().setValue(JSON.stringify(ast, null, '  '));
 		self.generateJS(ast);
 	};
 
@@ -26,16 +27,26 @@ app.generated = (function (self)
 	};
 
 	self.init = function () {
+		astEditor = ace.edit('outputPaneLeft');
 		codegenEditor = ace.edit('outputPaneRight');
+		
+		astEditor.setReadOnly(true);
 		codegenEditor.setReadOnly(true);
+
+		astEditor.setTheme("ace/theme/tomorrow_night_bright");
 		codegenEditor.setTheme("ace/theme/tomorrow_night_bright");
 
 		var session = codegenEditor.getSession();
 		session.setMode("ace/mode/javascript");
 		session.setUseWorker(false);
+
+		session = astEditor.getSession();
+		session.setMode("ace/mode/json");
+		session.setUseWorker(false);
 	};
 
 	self.resize = function () {
+		$(leftPaneSelector).height($(window).height() - 60);
 		$(rightPaneSelector).height($(window).height() - 60);
 	};
 
