@@ -44,7 +44,7 @@ app.generated = (function (self)
 	};
 
 	self.resize = function () {
-		var height = $(window).height - app.settings.heightOffset();
+		var height = $(window).height() - app.settings.heightOffset();
 		$(leftPaneSelector).height(height);
 		$(rightPaneSelector).height(height);
 	};
