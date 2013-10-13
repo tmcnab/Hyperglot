@@ -316,7 +316,7 @@ ul {
 }
 
 dd {
-  margin: 0 0 0 40px;
+  margin: 0 0 0 20px;
 }
 
 /*
@@ -788,7 +788,7 @@ section {
 section #title {
   border: 0;
   outline: none;
-  margin: 0 0 50px 0;
+  /*margin: 0 0 50px 0;*/
   padding: 0 0 5px 0;
 }
 section #title h1 {
@@ -851,4 +851,10 @@ section #title .credits.right {
   nav {
     display: none;
   }
+}
+
+dl {
+  border-radius: 3px;
+  border: 1px solid #ffcc00;
+  padding: 20px;
 }
