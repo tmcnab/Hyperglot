@@ -18,15 +18,15 @@ app.grammar = (function (self)
 			var preamble = "{\n var ast = require('ast-types').builders;\n}\n";
 			var opts = {
  							 cache: self.options.cache(),
-				trackLineAndColumn: self.options.trackLineAndColumn()
+				trackLineAndColumn: true//self.options.trackLineAndColumn()
 			};
 
-			self.parser = PEG.buildParser(preamble + input, opts);
-			app.nav.info('PEG: parser constructed.')
+			self.parser = require("pegjs").buildParser(preamble + input, opts);
+			app.nav.info('[PEGjs] Parser constructed.')
 		}
 		catch (ex) {
 			self.parser = null;
-			app.nav.error('PEG: ' + ex.message);
+			app.nav.error('[PEGjs] ' + ex.message);
 		}
 	}
 

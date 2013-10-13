@@ -1,0 +1,2 @@
+#!/bin/sh
+zip -r app.nw ace/ bs/ css/ js/ node_modules/ index.html package.json && open app.nw

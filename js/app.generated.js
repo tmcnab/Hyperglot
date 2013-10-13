@@ -12,42 +12,41 @@ app.generated = (function (self)
 		self.generateJS(ast);
 	};
 
-	self.generateJS = function (ast) 
-	{
+	self.generateJS = function (ast) {
 		try {
-			codegenEditor.getSession().setValue(
-				escodegen.generate(ast)
-			);
-			app.nav.info('Escodegen: successfully compiled AST.')
+			codegenEditor.getSession().setValue(escodegen.generate(ast));
+			app.nav.info('[Escodegen] successfully compiled AST.')
 		}
 		catch (ex) {
 			codegenEditor.getSession().setValue('');
-			app.nav.error('Escodegen ' + ex);
+			app.nav.error('[Escodegen] ' + ex);
 		}
 	};
 
 	self.init = function () {
+		var session = null;
+
+		// The AST of the generated language source
 		astEditor = ace.edit('outputPaneLeft');
-		codegenEditor = ace.edit('outputPaneRight');
-		
 		astEditor.setReadOnly(true);
-		codegenEditor.setReadOnly(true);
-
-		astEditor.setTheme("ace/theme/tomorrow_night_bright");
-		codegenEditor.setTheme("ace/theme/tomorrow_night_bright");
-
-		var session = codegenEditor.getSession();
-		session.setMode("ace/mode/javascript");
-		session.setUseWorker(false);
-
+		astEditor.setTheme(app.settings.aceTheme());
 		session = astEditor.getSession();
 		session.setMode("ace/mode/json");
+		session.setUseWorker(false);
+
+		// The generated JS source from the AST
+		codegenEditor = ace.edit('outputPaneRight');
+		codegenEditor.setReadOnly(true);
+		codegenEditor.setTheme(app.settings.aceTheme());
+		session = codegenEditor.getSession();
+		session.setMode("ace/mode/javascript");
 		session.setUseWorker(false);
 	};
 
 	self.resize = function () {
-		$(leftPaneSelector).height($(window).height() - 60);
-		$(rightPaneSelector).height($(window).height() - 60);
+		var height = $(window).height - app.settings.heightOffset();
+		$(leftPaneSelector).height(height);
+		$(rightPaneSelector).height(height);
 	};
 
 	return self;	

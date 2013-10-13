@@ -9,34 +9,13 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<ul class="nav navbar-nav">
 			<li class="active">
-				<a data-toggle="tab" data-target="#editorPane">
-					<span class="glyphicon glyphicon-filter"></span> Syntax
-				</a>
-			</li>
-			<li>
-				<a data-toggle="tab" data-target="#languagePane">
-					<span class="glyphicon glyphicon-comment"></span> Input
-				</a>
-			</li>
-			<li><a data-toggle="tab" data-target="#outputPane">
-					<span class="glyphicon glyphicon-tree-conifer"></span> Output
-				</a>
-			</li>
-			<li>
-				<a data-toggle="tab" data-target="#exportPane">
-					<span class="glyphicon glyphicon-export"></span> Export
-				</a>
-			</li>
-			<li>
-				<a data-toggle="tab" data-target="#docPane">
-					<span class="glyphicon glyphicon-book"></span> Docs
-				</a>
-			</li>
-			<li>
-				<a data-toggle="tab" data-target="#settingsPane">
-					<span class="glyphicon glyphicon-cog"></span> Settings
-				</a>
-			</li>
+				<a data-toggle="tab" data-target="#editorPane">Syntax</a></li>
+			<li><a data-toggle="tab" data-target="#languagePane">Input</a></li>
+			<li><a data-toggle="tab" data-target="#outputPane">Output</a></li>
+			<li><a data-toggle="tab" data-target="#exportPane">Export</a></li>
+			<li><a data-toggle="tab" data-target="#decoderPane">Decode</a></li>
+			<li><a data-toggle="tab" data-target="#docPane">Docs</a></li>
+			<li><a data-toggle="tab" data-target="#settingsPane">Settings</a></li>
 		</ul>
 	</nav>
 	<div class="tab-content">
@@ -56,64 +35,72 @@
 				</div>
 			</div>
 		</section>
+		<section class="tab-pane" id="decoderPane">
+			<div class="row">
+				<div class="col-md-6">
+					<div id="decoderPaneLeft"></div>
+				</div>
+				<div class="col-md-6">
+					<div id="decoderPaneRight"></div>
+				</div>
+			</div>
+		</section>
 		<section class="tab-pane" id="exportPane">
-			<button id="exportCompilerBtn" class="btn btn-default">Download Compiler</button>
-			This is where you build your compiler package
+			<div style="text-align:center; padding-top:200px">
+				<p class="lead">Coming Soon</p>
+			</div>
 		</section>
 		<section class="tab-pane" id="docPane">
 			<div class="row">
-				<ul class="nav nav-list col-md-2">
-				  <li class="active">
-					    <a data-toggle="tab" data-target="#psPane">PEG Studio</a></li>
-					<li><a data-toggle="tab" data-target="#psPEGjs">PEG.js</a></li>
-				</ul>
+				<div class="col-md-2">
+					<h3>Docs</h3>	
+					<ul class="nav nav-list">
+						<li class="active">
+						    <a data-toggle="tab" data-target="#docPaneOverview">Overview</a></li>
+						<li><a data-toggle="tab" data-target="#docPanePEG">PEG</a></li>
+						<li><a data-toggle="tab" data-target="#docPaneAST">AST</a></li>
+					</ul>
+				</div>
 				<div class="tab-content col-md-10">
-					<div class="tab-pane active" id="psPane">
-						<h3>PEG Studio</h3>
-						<p>This is peg studio.</p>
+					<div class="tab-pane active" id="docPaneOverview">
+						<h3>Overview</h3>
+						<p>Lorem ipsum dolor amet</p>
 					</div>
-					<div class="tab-pane" id="psPEGjs">
-						<h3>PEG.js Documentation</h3>
-						<p>This is peg.js. It's pretty awesome.</p>
+					<div class="tab-pane" id="docPanePEG">
+						<h3>PEG</h3>
+						<p>Lorem ipsum dolor amet</p>
+					</div>
+					<div class="tab-pane" id="docPaneAST">
+						<h3>AST</h3>
+						<p>Lorem ipsum dolor amet</p>
 					</div>
 				</div>
 			</div>
 		</section>
 		<section class="tab-pane" id="settingsPane" style="padding:20px">
-			<div class="row">
-				<div class="col-md-6">
-					<table class="table">
-						<thead><tr><th colspan="2">Editor Settings</th></tr></thead>
-						<tbody>
-							<tr><td>Soft Tabs</td><td><input type="checkbox" /></td></tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="col-md-6">
-					<table class="table">
-						<thead><tr><th colspan="2">General Settings</th></tr></thead>
-						<tbody>
-							<tr><td>Generate Recursive</td><td><input type="checkbox" /></td></tr>
-						</tbody>
-					</table>
-				</div>
+			<div style="text-align:center; padding-top:200px">
+				<p class="lead">Coming Soon</p>
 			</div>
 		</section>
 	</div>
 	<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
 		<small class="navbar-text" id="messages">Ready.</small>
 	</nav>
+	
+	<!-- Generic Includes -->
 	<script src="js/jquery.min.js"></script>
 	<script src="bs/js/bootstrap.min.js"></script>
 	<script src="ace/ace.js"></script>
-	<script src="js/jsontree.min.js"></script>
-	<script src="node_modules/pegjs/lib/peg.js"></script>
+
+	<!-- App Includes -->
 	<script>var app = app || {};</script>    
+	<script src="js/app.settings.js"></script>
     <script src="js/app.nav.js"></script>
 	<script src="js/app.ui.js"></script>
 	<script src="js/app.grammar.js"></script>
 	<script src="js/app.language.js"></script>
 	<script src="js/app.generated.js"></script>
+	<script src="js/app.decoder.js"></script>
 	<script>app.ui.init()</script>
 </body>
 </html>

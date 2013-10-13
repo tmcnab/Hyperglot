@@ -9,9 +9,8 @@ app.nav = (function () {
 		if (message == oldMessage) return;
 		else oldMessage = message;
 
-		var html = '<span class="glyphicon glyphicon-ok"></span> ' + message;
 		$(sel).fadeOut('fast', function() {
-			$(sel).html(html).fadeIn('fast');
+			$(sel).html(message).fadeIn('fast');
 		});
 	};
 

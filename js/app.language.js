@@ -16,7 +16,7 @@ app.language = (function (self)
 		
 		try {
 			self.currentAST = app.grammar.parser.parse(text);
-			app.nav.info('Parser: No Errors');
+			app.nav.info('[Parser] AST generated.');
 			try {
 				app.generated.setAST(self.currentAST);
 			} 
@@ -25,13 +25,13 @@ app.language = (function (self)
 			}
 		} 
 		catch (ex) {
-			app.nav.error('Parser: ' + ex.message);
+			app.nav.error('[Parser] ' + ex.message);
 		}
 	}
 
-	self.init = function () {
+	self.init = function() {
 		editor = ace.edit("inputEditor");
-		editor.setTheme("ace/theme/tomorrow_night_bright");
+		editor.setTheme(app.settings.aceTheme());
 
 		var session = editor.getSession();
 		session.setValue(localStorage.getItem('app.language.text') || DEFAULT_TEXT);
