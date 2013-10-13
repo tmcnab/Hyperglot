@@ -1,66 +1,36 @@
 app.grammar = (function (self) 
 {
 	var DEFAULT_TEXT = "Program\n  = \n  { return ast.Program([]) }\n";
-	/*var astSource = 
-"var ast = (function (self) 									\
-{																\
-	self.ArrayExpression = function (elements) {				\
-		return { type:'ArrayExpression', elements:elements };	\
-	};															\
-																\
-	self.AssignmentExpression = function (op, left, right) {	\
-		return { type:'AssignmentExpression', operator:op, 		\
-		         left:left, right:right };						\
-	};															\
-																\
-	self.BlockStatement = function (stmts) {					\
-		return { type:'BlockStatement', body:stmts };			\
-	};															\
-																\
-	self.Identifier = function (name) {							\
-		return { type:'Identifier', name:name };				\
-	};															\
-																\
-	self.Literal = function (value) {							\
-		return { type:'Literal', value:value };					\
-	};															\
-																\
-	self.Program = function (value) {							\
-		return { type:'Program', body:value };					\
-	};															\
-																\
-	return self;												\
-})(ast || {});\n";*/
-	var astSource = "var ast = require('ast-types').builders;";
 
 	var editor = null;
 	self.parser = null;
 
-	function onChange () 
-	{
+	function onChange() {
 		// Grab the text from the editor and save it into localstorage
 		var text = editor.getSession().getValue();
 		localStorage.setItem('app.grammar.text', text);
 		buildParser();
 	}
 
-	function buildParser () 
-	{
+	function buildParser() {
 		var input = localStorage.getItem('app.grammar.text') || "";
-		try 
-		{
-			self.parser = PEG.buildParser('{\n' + astSource + '\n}\n' + input, {
-				             cache: self.options.cache(),
+		try {
+			var preamble = "{\n var ast = require('ast-types').builders;\n}\n";
+			var opts = {
+ 							 cache: self.options.cache(),
 				trackLineAndColumn: self.options.trackLineAndColumn()
-			});
-			app.nav.info('Parser built.')
+			};
+
+			self.parser = PEG.buildParser(preamble + input, opts);
+			app.nav.info('PEG: parser constructed.')
 		}
 		catch (ex) {
+			self.parser = null;
 			app.nav.error('PEG: ' + ex.message);
 		}
 	}
 
-	self.init = function () {
+	self.init = function() {
 		editor = ace.edit('grammarEditor');
 		editor.setTheme("ace/theme/tomorrow_night_bright");
 

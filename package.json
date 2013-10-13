@@ -27,7 +27,8 @@
   },
   "dependencies": {
     "escodegen": "0.0.27",
-    "ast-types": "~0.3.5"
+    "ast-types": "~0.3.5",
+    "pegjs": "~0.7.0"
   },
   "window": {
     "title": "Hyperglot",
