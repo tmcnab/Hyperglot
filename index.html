@@ -45,19 +45,21 @@
 			</div>
 		</section>
 		<section class="tab-pane" id="exportPane">
-			<div class="row">
+		<div class="row">
 				<div class="col-md-6 col-md-offset-3">
-					
-						<fieldset>
-							<div class="form-group">
-								<label for="name" class="control-label">Name</label>
-								<input type="text" class="form-control" name="name" placeholder="compiler-name">
+					<div class="panel panel-primary" style="margin-top:100px">
+						<div class="panel-heading">
+							<h3 class="panel-title">Compiler Creation</h3>
+						</div>
+						<div class="panel-body">
+							<p>The button below will create your compiler archive '~/hgc-compiler.zip'. After you unzip it, run 'npm install' to install the necessary dependencies.</p>
+							<p>Don't fret, there will be more options in the future.</p>
+							<hr />
+							<div class="text-center">
+								<button id="exportPaneBtnDone" class="btn btn-large btn-default">Create Compiler</button>
 							</div>
-							<div class="form-group">
-								<button id="exportPaneBtnDone" class="btn btn-primary">Create</button>
-							</div>
-						</fieldset>
-					
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>

@@ -17,7 +17,7 @@ app.exportPane = (function (self)
 		zipFile.addLocalFile(process.env.PWD + '/hgc/parser.js');
 
 		var homeDir = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
-		zipFile.writeZip(homeDir +  "/hyperglot-compiler.zip");
+		zipFile.writeZip(homeDir +  "/hgc-compiler.zip");
 	};
 
 	$('#exportPaneBtnDone').on('click', self.run);
