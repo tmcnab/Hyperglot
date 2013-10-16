@@ -8,7 +8,7 @@ app.language = (function (self)
 	function onChange () {
 		var text = editor.getSession().getValue();
 		localStorage.setItem('app.language.text', text);
-		parse();
+		self.parse();
 	}
 
 	self.parse = function () {

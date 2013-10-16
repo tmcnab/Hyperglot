@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+var fs = require('fs');
+
+
+if (process.argv.length != 3) {
+	throw "Must specify an input file";
+}
+
+// Read input file
+var inFileName = process.argv.slice(2)[0];
+var source = fs.readFileSync(inFileName, 'utf-8');
+
+// Turn source code into AST
+var ast = require('./parser.js').parse(source);
+
+// Optimize AST
+ast = require('esoptimize').optimize(ast);
+
+// Transform AST into JS
+var js = require('escodegen').generate(ast);
+
+// Write it out to file
+var outFileName = inFileName + '.js';
+fs.writeFileSync(outFileName, js);
+
+// Done.

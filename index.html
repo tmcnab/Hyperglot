@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" href="bs/css/bootstrap.css" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -45,8 +45,20 @@
 			</div>
 		</section>
 		<section class="tab-pane" id="exportPane">
-			<div style="text-align:center; padding-top:200px">
-				<p class="lead">Coming Soon</p>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					
+						<fieldset>
+							<div class="form-group">
+								<label for="name" class="control-label">Name</label>
+								<input type="text" class="form-control" name="name" placeholder="compiler-name">
+							</div>
+							<div class="form-group">
+								<button id="exportPaneBtnDone" class="btn btn-primary">Create</button>
+							</div>
+						</fieldset>
+					
+				</div>
 			</div>
 		</section>
 		<section class="tab-pane" id="settingsPane" style="padding:20px">
@@ -73,6 +85,7 @@
 	<script src="js/app.language.js"></script>
 	<script src="js/app.generated.js"></script>
 	<script src="js/app.decoder.js"></script>
+	<script src="js/app.exportPane.js"></script>
 	<script>app.ui.init()</script>
 </body>
 </html>

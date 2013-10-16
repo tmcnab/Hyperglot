@@ -1,0 +1,14 @@
+{
+  "name": "hgc",
+  "version": "0.0.0",
+  "description": "hgc compiler",
+  "main": "hgc",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "commander": "~2.0.0",
+    "ast-types": "~0.3.5",
+    "esoptimize": "0.0.1",
+    "escodegen": "0.0.27"
+  }
+}
