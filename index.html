@@ -40,6 +40,8 @@
 			<dd><a href="#license">License</a></dd>
 		</dl>
 		<p>Hyperglot aims to speed up the way you create and develop programming languages or DSLs. You specify a PEG grammar using Spidermonkey AST primitives and you get a compiler back. Simple as that.</p>
+		<p>To run a <a href="https://github.com/tmcnab/Hyperglot/releases">release</a> of Hyperglot, you will need to have a <a href="https://github.com/rogerwang/node-webkit/releases">node-webkit binary</a>. This is very early development software, so be aware there are going to be bugs (basically a series of hacks to get a prototype working).</p>
+		<iframe src="http://ghbtns.com/github-btn.html?user=tmcnab&repo=Hyperglot&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" height="20px"></iframe>
 		<p style="clear:both;"></p>
 		<hr>
 
@@ -78,7 +80,7 @@ Identifier = c:[A-Za-z]+ {
 
 	<h3 id="decodePane">Decode Pane</h3>
 	<img src="images/Decode.png" />
-	<p>Lorem ipsum dolor sit amet</p>
+	<p>In the decode pane you can input some EcmaScript and get the AST representation of the code you input thanks to <a href="http://esprima.org">Esprima</a>. Good for determining what kind of AST a particular feature of your lanugage might need to emit.</p>
 	<p style="text-align:center"><a href="#overview">Overview</a></p>
 	<hr>
 
@@ -86,15 +88,19 @@ Identifier = c:[A-Za-z]+ {
 
 	<h3 id="exportPane">Export Pane</h3>
 	<img src="images/Export.png" />
-	<p>Lorem ipsum dolor sit amet</p>
+	<p>The export pane turns your PEG into a fully-fledged compiler using the very tools used by Hyperglot. Right now it's a proof-of-concept with just the basic functionality (input a file, get a file out).</p>
+
 	<p style="text-align:center"><a href="#overview">Overview</a></p>
 	<hr>	
 
 
+
 	<h3 id="getInvolved">Get Involved</h3>
-	<p>Lorem ipsum dolor sit amet</p>
+	<p>If you have feedback, please create a new <a href="https://github.com/tmcnab/Hyperglot/issues/new">Issue on GitHub</a> or review <a href="https://github.com/tmcnab/Hyperglot/issues">existing issues</a>. Pull requests are welcome.</p>
 	<p style="text-align:center"><a href="#overview">Overview</a></p>
 	<hr>
+
+
 
 	<h3 id="credits">Credits</h3>
 	<p>Without the following libraries and projects, Hyperglot would not be possible:</p>
