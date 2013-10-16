@@ -34,7 +34,6 @@
 			<dd><a href="#outputPane">Output</a></dd>
 			<dd><a href="#decodePane">Decode</a></dd>
 			<dd><a href="#exportPane">Export</a></dd>
-			<dd><a href="#settingsPane">Settings</a></dd>
 			<dt>More</dt>
 			<dd><a href="#getInvolved">Get Involved</a></dd>
 			<dd><a href="#credits">Credits</a></dd>
@@ -46,7 +45,7 @@
 
 
 		<h3 id="syntaxPane">Syntax Pane</h3>
-		<img src="http://lorempixel.com/g/650/390/cats/1" />
+		<img src="images/Syntax.png" />
 		<p>The syntax pane is where you specify the grammar of your language or DSL. It is based around <a href="http://majda.cz/en/">David Majda's</a> excellent <a href="http://pegjs.majda.cz/">PEG.js</a>, a parser generator. For the syntax of PEG.js, please read it's <a href="http://pegjs.majda.cz/documentation">documentation</a>.
 		<p>PEG.js is great, but to shortcut the time it takes to get a <abbr title="Abstract Syntax Tree">AST</abbr> up and going, you can access a variable called <code>ast</code> with node type functions as properties. This object follows the Mozilla Spidermonkey Parser API. 
 
@@ -61,7 +60,7 @@ Identifier = c:[A-Za-z]+ {
 
 
 	<h3 id="inputPane">Input Pane</h3>
-	<img src="http://lorempixel.com/g/650/390/cats/2" />
+	<img src="images/Input.png" />
 	<p>The input pane is where you write the source of your language / DSL. If your parser was successfully generated using the <a href="#syntaxPane">Syntax pane</a>, any source language you input into the editor will be parsed by the parser you generated. If the source was successfully parsed the lower status message area will tell you so, and you should move to the <a href="#outputPane">Output Pane</a>. If it failed to parse, you will be told so.</p>
 	<p style="text-align:center"><a href="#overview">Overview</a></p>
 	<hr>
@@ -69,7 +68,7 @@ Identifier = c:[A-Za-z]+ {
 
 
 	<h3 id="outputPane">Output Pane</h3>
-	<img src="http://lorempixel.com/g/650/390/cats/3" />
+	<img src="images/Output.png" />
 	<p>If your custom language / DSL was parsed successfully, the AST will appear on the left. If you used the right combination of AST nodes in your tree, <a href="#">Escodegen</a> will have successfully transformed your AST into EcmaScript. Congratulations, you've built a language!</p>
 	<p>If for some reason it didn't generate source for your input source language, then it's because the wrong types of expressions / statements were used and you need to rework your AST.</p>
 	<p style="text-align:center"><a href="#overview">Overview</a></p>
@@ -78,7 +77,7 @@ Identifier = c:[A-Za-z]+ {
 
 
 	<h3 id="decodePane">Decode Pane</h3>
-	<img src="http://lorempixel.com/g/650/390/cats/4" />
+	<img src="images/Decode.png" />
 	<p>Lorem ipsum dolor sit amet</p>
 	<p style="text-align:center"><a href="#overview">Overview</a></p>
 	<hr>
@@ -86,17 +85,10 @@ Identifier = c:[A-Za-z]+ {
 
 
 	<h3 id="exportPane">Export Pane</h3>
-	<img src="http://lorempixel.com/g/650/390/cats/5" />
+	<img src="images/Export.png" />
 	<p>Lorem ipsum dolor sit amet</p>
 	<p style="text-align:center"><a href="#overview">Overview</a></p>
 	<hr>	
-
-
-	<h3 id="settingsPane">Settings Pane</h3>
-	<img src="http://lorempixel.com/g/650/390/cats/6" />
-	<p>Lorem ipsum dolor sit amet</p>
-	<p style="text-align:center"><a href="#overview">Overview</a></p>
-	<hr>
 
 
 	<h3 id="getInvolved">Get Involved</h3>
