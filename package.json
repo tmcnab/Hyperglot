@@ -21,7 +21,7 @@
     "IDE"
   ],
   "author": "@tmcnab <tristan.j.mcnab@gmail.com>",
-  "license": "CC-BY-NC-SA <http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode>",
+  "license": "Modified MIT <https://github.com/tmcnab/Hyperglot/blob/master/LICENSE>",
   "bugs": {
     "url": "https://github.com/tmcnab/Hyperglot/issues"
   },
