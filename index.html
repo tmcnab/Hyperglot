@@ -101,7 +101,7 @@
 								<h3 class="panel-title">Compiler Creation</h3>
 							</div>
 							<div class="panel-body">
-								<p>The button below will create your compiler archive '~/hgc-compiler.zip'. After you unzip it, run 'npm install' to install the necessary dependencies.</p>
+								<p>The button below will create your compiler archive <span id="exportPanePath">'~/hgc-compiler.zip'</span>. After you unzip it, run 'npm install' to install the necessary dependencies.</p>
 								<p>Don't fret, there will be more options in the future.</p>
 								<hr />
 								<div class="text-center">
@@ -123,23 +123,65 @@
 		</nav>
 	</div>
 	
+	<!-- Modal Views -->
+
 	<form id="newProjectView" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">New Project</h4>
+				</div>
 				<div class="modal-body">
 					<div class="form-group">
 						<input type="text" class="form-control" name="npvName" placeholder="Project Name (required)" required />
 					</div>
+				</div>
+				<div class="modal-footer">
 					<div class="btn-group btn-group-justified">
 						<style scoped>button { width: 50%; }</style>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						<button type="submit" class="btn btn-primary">Create</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	<div id="singleButtonModalView" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title"></h4>
+				</div>
+				<div class="modal-body">
+					<p></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-block">Okay</button>
+				</div>
+			</div>
+		</div>
+	</div>	
+
+	<div id="confirmModalView" class="modal fade" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Confirm</h4>
+				</div>
+				<div class="modal-body">
+					<p>&nbsp;</p>
+				</div>
+				<div class="modal-footer">
+					<div class="btn-group btn-group-justified">
+						<style scoped>button { width: 50%; }</style>
+						<button id="cMVYesBtn" type="button" class="btn btn-primary">Confirm</button>
+						<button id="cMVNoBtn" type="button" class="btn btn-default">Deny</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	
 </body>
 </html>

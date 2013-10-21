@@ -25,7 +25,14 @@ var ProjectsViewController = (function()
 			var when = $('<span>').text(moment(doc.updated).fromNow()).addClass('pull-right');
 
 			var tdRemove = $('<td>').append($('<i>').addClass('icon-remove')).on('click', function (evt) {
-				ProjectsViewController.Remove(doc._id);
+				var message = "Are you sure you want to delete the " + doc.name + " project? This can't be undone.";
+				function handler(bool) {
+					if (bool) {
+						ProjectsViewController.Remove(doc._id);
+					}
+				}
+				
+				ModalViewController.Confirm(message, handler, "Yes", "No");
 			}).css({
 				width: '1px',
 				cursor: 'pointer'

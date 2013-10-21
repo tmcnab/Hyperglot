@@ -38,10 +38,7 @@ module.exports = (function(){
     parse: function(input, startRule) {
       var parseFunctions = {
         "Program": parse_Program,
-        "Assignment": parse_Assignment,
-        "Symbol": parse_Symbol,
-        "Operand": parse_Operand,
-        "Number": parse_Number,
+        "Statement": parse_Statement,
         "lparen": parse_lparen,
         "rparen": parse_rparen,
         "ws": parse_ws,
@@ -107,10 +104,10 @@ module.exports = (function(){
         
         pos0 = pos;
         result0 = [];
-        result1 = parse_Assignment();
+        result1 = parse_Statement();
         while (result1 !== null) {
           result0.push(result1);
-          result1 = parse_Assignment();
+          result1 = parse_Statement();
         }
         if (result0 !== null) {
           result0 = (function(offset, stmts) {
@@ -123,85 +120,15 @@ module.exports = (function(){
         return result0;
       }
       
-      function parse_Assignment() {
-        var result0, result1, result2, result3;
+      function parse_Statement() {
+        var result0, result1;
         var pos0, pos1;
         
         pos0 = pos;
         pos1 = pos;
         result0 = parse_lparen();
         if (result0 !== null) {
-          result1 = parse_Symbol();
-          if (result1 !== null) {
-            result2 = parse_Operand();
-            if (result2 !== null) {
-              result3 = parse_rparen();
-              if (result3 !== null) {
-                result0 = [result0, result1, result2, result3];
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, l, r) {
-            return ast.expressionStatement(
-                ast.assignmentExpression('=', l, r)
-            )
-        })(pos0, result0[1], result0[2]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_Symbol() {
-        var result0, result1;
-        var pos0, pos1;
-        
-        reportFailures++;
-        pos0 = pos;
-        pos1 = pos;
-        if (/^[A-Za-z]/.test(input.charAt(pos))) {
-          result1 = input.charAt(pos);
-          pos++;
-        } else {
-          result1 = null;
-          if (reportFailures === 0) {
-            matchFailed("[A-Za-z]");
-          }
-        }
-        if (result1 !== null) {
-          result0 = [];
-          while (result1 !== null) {
-            result0.push(result1);
-            if (/^[A-Za-z]/.test(input.charAt(pos))) {
-              result1 = input.charAt(pos);
-              pos++;
-            } else {
-              result1 = null;
-              if (reportFailures === 0) {
-                matchFailed("[A-Za-z]");
-              }
-            }
-          }
-        } else {
-          result0 = null;
-        }
-        if (result0 !== null) {
-          result1 = parse_ws();
+          result1 = parse_rparen();
           if (result1 !== null) {
             result0 = [result0, result1];
           } else {
@@ -213,91 +140,12 @@ module.exports = (function(){
           pos = pos1;
         }
         if (result0 !== null) {
-          result0 = (function(offset, c) {
-            return ast.identifier(c.join(''));
-        })(pos0, result0[0]);
+          result0 = (function(offset) {
+            return ast.emptyStatement();
+        })(pos0);
         }
         if (result0 === null) {
           pos = pos0;
-        }
-        reportFailures--;
-        if (reportFailures === 0 && result0 === null) {
-          matchFailed("symbol");
-        }
-        return result0;
-      }
-      
-      function parse_Operand() {
-        var result0;
-        
-        reportFailures++;
-        result0 = parse_Symbol();
-        if (result0 === null) {
-          result0 = parse_Number();
-        }
-        reportFailures--;
-        if (reportFailures === 0 && result0 === null) {
-          matchFailed("operand");
-        }
-        return result0;
-      }
-      
-      function parse_Number() {
-        var result0, result1;
-        var pos0, pos1;
-        
-        reportFailures++;
-        pos0 = pos;
-        pos1 = pos;
-        if (/^[0-9]/.test(input.charAt(pos))) {
-          result1 = input.charAt(pos);
-          pos++;
-        } else {
-          result1 = null;
-          if (reportFailures === 0) {
-            matchFailed("[0-9]");
-          }
-        }
-        if (result1 !== null) {
-          result0 = [];
-          while (result1 !== null) {
-            result0.push(result1);
-            if (/^[0-9]/.test(input.charAt(pos))) {
-              result1 = input.charAt(pos);
-              pos++;
-            } else {
-              result1 = null;
-              if (reportFailures === 0) {
-                matchFailed("[0-9]");
-              }
-            }
-          }
-        } else {
-          result0 = null;
-        }
-        if (result0 !== null) {
-          result1 = parse_ws();
-          if (result1 !== null) {
-            result0 = [result0, result1];
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, d) {
-            return ast.literal(parseFloat(d.join(''), 10));
-        })(pos0, result0[0]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        reportFailures--;
-        if (reportFailures === 0 && result0 === null) {
-          matchFailed("number");
         }
         return result0;
       }

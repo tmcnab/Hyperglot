@@ -206,6 +206,8 @@ var EditorViewController = (function()
 			editors['#languageEditor'].getSession().setValue(activeDocument.language);
 			editors['#decoderPaneLeft'].getSession().setValue(activeDocument.ecmascript);
 
+			$('#exportPanePath').text("~/" + activeDocument.name + ".zip");
+
 			self.Present();
 		}
 

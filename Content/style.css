@@ -54,6 +54,18 @@ body.modal-open {
 	margin-right: 0;
 }
 
+.modal-content {
+	border: 1px solid #282828;
+}
+
+.modal-body {
+	padding-bottom: 0;
+}
+
+.modal-body .form-group {
+	margin-bottom: 0;
+}
+
 /** GitHub Commits Widget CSS **/
 
 #github-commits {
