@@ -26,7 +26,10 @@ var ProjectsViewController = (function()
 
 			var tdRemove = $('<td>').append($('<i>').addClass('icon-remove')).on('click', function (evt) {
 				ProjectsViewController.Remove(doc._id);
-			})
+			}).css({
+				width: '1px',
+				cursor: 'pointer'
+			});
 
 			tr.append(td.append(text).append(when))
 			  .append(tdRemove);
@@ -96,6 +99,8 @@ var ProjectsViewController = (function()
 				require('nw.gui').Shell.openExternal($(this).attr('href'));
 			});
         }, 3000)
+
+        $('#semver').text(VERSION);
 	};
 
 	self.Present = function() {

@@ -1,26 +1,53 @@
 #!/usr/bin/env node
 var fs = require('fs');
+var cmd = require('commander');
 
 
-if (process.argv.length != 3) {
-	throw "Must specify an input file";
+//-- Setup Command Options --//
+cmd.usage('[options] <file ...>')
+   .option('-a, --ast', 'only output the AST of the input (ast.json)')
+   .option('-o, --output <filename>', 'specify output filename')
+   .option('-O, --optimize', 'enable optimizations via esoptimize')
+   .process(process.argv);
+
+cmd.ast = cmd.ast || false;
+cmd.output = cmd.output || "output.js";
+cmd.optimize = cmd.optimize || true;
+
+
+//-- Exit early if there's no input file --//
+if (cmd.args.length < 1) {
+	cmd.help();
 }
 
-// Read input file
-var inFileName = process.argv.slice(2)[0];
-var source = fs.readFileSync(inFileName, 'utf-8');
 
-// Turn source code into AST
-var ast = require('./parser.js').parse(source);
+//-- Ensure files exist and read into buffer --//
+var sourceInput = "";
+cmd.args.forEach(function (path, index, args) {
+	if (!fs.existsSync(path)) {
+		console.error(path + " doesn't exist.")
+		process.exit(1);
+	} else {
+		sourceInput = sourceInput + "\n\n" + fs.readFileSync(path, 'utf-8'); 
+	}
+})
 
-// Optimize AST
-ast = require('esoptimize').optimize(ast);
 
-// Transform AST into JS
-var js = require('escodegen').generate(ast);
+//-- Turn source code into AST (output and exit if specified) --//
+var ast = require('./parser.js').parse(sourceInput);
+if (cmd.ast) {
+	fs.writeFileSync('ast.json', JSON.stringify(ast, null, 2));
+	process.exit(0);
+}
 
-// Write it out to file
-var outFileName = inFileName + '.js';
-fs.writeFileSync(outFileName, js);
+
+//-- Optimize AST (if specified) --//
+if (cmd.optimize) {
+	ast = require('esoptimize').optimize(ast);	
+}
+
+
+//-- Transform AST into JS and output --//
+fs.writeFileSync(cmd.output, require('escodegen').generate(ast));
 
 // Done.

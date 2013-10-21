@@ -50,6 +50,10 @@ html, body {
 }
 
 
+body.modal-open {
+	margin-right: 0;
+}
+
 /** GitHub Commits Widget CSS **/
 
 #github-commits {

@@ -1,6 +1,6 @@
 {
   "name": "Hyperglot",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "IDE for formulating programming languages",
   "main": "index.html",
   "directories": {
