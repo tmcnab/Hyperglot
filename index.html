@@ -2,92 +2,140 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" href="css/bootstrap.min.css" />
-	<link rel="stylesheet" href="css/style.css" />
+	<title>Hyperglot</title>
+	<link rel="stylesheet" href="Vendor/bootswatch/cyborg/bootstrap.min.css" />
+	<link rel="stylesheet" href="Content/style.css" />
+
+	<!-- Support Scripts -->
+	<script src="Vendor/jquery/jquery.min.js"></script>
+	<script src="Vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="Vendor/ace/ace-1.0.0/src-noconflict/ace.js"></script>
+	<script src="Vendor/momentjs/moment.js"></script>
+	<script src="Vendor/github-commits-widget/js/github.commits.widget.js"></script>
+
+	<!-- Model Related -->
+	<script src="App/Models/Project.js"></script>
+	<script src="App/Models/Projects.js"></script>
+	<script src="App/Models/Settings.js"></script>
+
+	<!-- View Controllers -->
+	<script src="App/Controllers/ModalViewController.js"></script>
+	<script src="App/Controllers/ProjectsViewController.js"></script>
+	<script src="App/Controllers/EditorViewController.js"></script>
+
+	<!-- Main -->
+	<script src="App/main.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<ul class="nav navbar-nav">
-			<li class="active">
-				<a data-toggle="tab" data-target="#editorPane">Syntax</a></li>
-			<li><a data-toggle="tab" data-target="#languagePane">Input</a></li>
-			<li><a data-toggle="tab" data-target="#outputPane">Output</a></li>
-			<li><a data-toggle="tab" data-target="#exportPane">Export</a></li>
-			<li><a data-toggle="tab" data-target="#decoderPane">Decode</a></li>
-			<li><a data-toggle="tab" data-target="#settingsPane">Settings</a></li>
-		</ul>
-	</nav>
-	<div class="tab-content">
-		<section class="tab-pane active" id="editorPane">
-			<div id="grammarEditor"></div>
-		</section>
-		<section class="tab-pane" id="languagePane">
-			<div id="inputEditor"></div>
-		</section>
-		<section class="tab-pane" id="outputPane">
-			<div class="row">
-				<div class="col-md-6">
-					<div id="outputPaneLeft"></div>
-				</div>
-				<div class="col-md-6">
-					<div id="outputPaneRight"></div>
-				</div>
-			</div>
-		</section>
-		<section class="tab-pane" id="decoderPane">
-			<div class="row">
-				<div class="col-md-6">
-					<div id="decoderPaneLeft"></div>
-				</div>
-				<div class="col-md-6">
-					<div id="decoderPaneRight"></div>
-				</div>
-			</div>
-		</section>
-		<section class="tab-pane" id="exportPane">
+	
+	<div id="landingView" class="container" style="display:none">
+		<header class="page-header">
+			<h1>Welcome to Hyperglot</h1>
+		</header>
 		<div class="row">
-				<div class="col-md-6 col-md-offset-3">
-					<div class="panel panel-primary" style="margin-top:100px">
-						<div class="panel-heading">
-							<h3 class="panel-title">Compiler Creation</h3>
-						</div>
-						<div class="panel-body">
-							<p>The button below will create your compiler archive '~/hgc-compiler.zip'. After you unzip it, run 'npm install' to install the necessary dependencies.</p>
-							<p>Don't fret, there will be more options in the future.</p>
-							<hr />
-							<div class="text-center">
-								<button id="exportPaneBtnDone" class="btn btn-large btn-default">Create Compiler</button>
+			<div class="col-md-6">
+				<h3>Projects</h3>
+				<table id="projectList" class="table">
+					<thead>
+						<tr><th><a data-toggle="modal" data-target="#newProjectView">New Project &hellip;</a></th></tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+			<div class="col-md-5 col-md-offset-1">
+				<h3>Repo</h3>
+				<div id="github-commits"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="ideView" style="display:none">
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<ul class="nav navbar-nav">
+				<li class="active">
+					<a data-toggle="tab" data-target="#editorPane">Syntax</a></li>
+				<li><a data-toggle="tab" data-target="#languagePane">Input</a></li>
+				<li><a data-toggle="tab" data-target="#outputPane">Output</a></li>
+				<li><a data-toggle="tab" data-target="#exportPane">Export</a></li>
+				<li><a data-toggle="tab" data-target="#decoderPane">Decode</a></li>
+				<li><a data-toggle="tab" data-target="#settingsPane">Settings</a></li>
+			</ul>
+			<button id="ideCloseBtn" class="btn btn-default btn-xs pull-right navbar-btn">close</button>
+		</nav>
+		<div class="tab-content">
+			<section class="tab-pane active" id="editorPane">
+				<div id="grammarEditor"></div>
+			</section>
+			<section class="tab-pane" id="languagePane">
+				<div id="languageEditor"></div>
+			</section>
+			<section class="tab-pane" id="outputPane">
+				<div class="row">
+					<div class="col-md-6">
+						<div id="outputPaneLeft"></div>
+					</div>
+					<div class="col-md-6">
+						<div id="outputPaneRight"></div>
+					</div>
+				</div>
+			</section>
+			<section class="tab-pane" id="decoderPane">
+				<div class="row">
+					<div class="col-md-6">
+						<div id="decoderPaneLeft"></div>
+					</div>
+					<div class="col-md-6">
+						<div id="decoderPaneRight"></div>
+					</div>
+				</div>
+			</section>
+			<section class="tab-pane" id="exportPane">
+			<div class="row">
+					<div class="col-md-6 col-md-offset-3">
+						<div class="panel panel-primary" style="margin-top:100px">
+							<div class="panel-heading">
+								<h3 class="panel-title">Compiler Creation</h3>
+							</div>
+							<div class="panel-body">
+								<p>The button below will create your compiler archive '~/hgc-compiler.zip'. After you unzip it, run 'npm install' to install the necessary dependencies.</p>
+								<p>Don't fret, there will be more options in the future.</p>
+								<hr />
+								<div class="text-center">
+									<button id="exportPaneBtnDone" class="btn btn-large btn-default">Create Compiler</button>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
-		<section class="tab-pane" id="settingsPane" style="padding:20px">
-			<div style="text-align:center; padding-top:200px">
-				<p class="lead">Coming Soon</p>
-			</div>
-		</section>
+			</section>
+			<section class="tab-pane" id="settingsPane" style="padding:20px">
+				<div style="text-align:center; padding-top:200px">
+					<p class="lead">Coming Soon</p>
+				</div>
+			</section>
+		</div>
+		<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+			<small class="navbar-text" id="messages">Ready.</small>
+		</nav>
 	</div>
-	<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
-		<small class="navbar-text" id="messages">Ready.</small>
-	</nav>
 	
-	<!-- Generic Includes -->
-	<script src="js/jquery.min.js"></script>
-	<script src="bs/js/bootstrap.min.js"></script>
-	<script src="ace/ace.js"></script>
+	<form id="newProjectView" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="form-group">
+						<input type="text" class="form-control" name="npvName" placeholder="Project Name (required)" required />
+					</div>
+					<div class="btn-group btn-group-justified">
+						<style scoped>button { width: 50%; }</style>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Create</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	<!-- App Includes -->
-	<script>var app = app || {};</script>    
-	<script src="js/app.settings.js"></script>
-    <script src="js/app.nav.js"></script>
-	<script src="js/app.ui.js"></script>
-	<script src="js/app.grammar.js"></script>
-	<script src="js/app.language.js"></script>
-	<script src="js/app.generated.js"></script>
-	<script src="js/app.decoder.js"></script>
-	<script src="js/app.exportPane.js"></script>
-	<script>app.ui.init()</script>
+	
 </body>
 </html>

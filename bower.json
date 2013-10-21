@@ -1,0 +1,23 @@
+{
+  "name": "Hyperglot",
+  "version": "0.0.1",
+  "homepage": "https://github.com/tmcnab/Hyperglot",
+  "authors": [
+    "Tristan McNab <tristan.j.mcnab@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "Vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ace": "~1.1.1",
+    "bootswatch": "~3.0.0",
+    "momentjs": "~2.3.1"
+  }
+}

@@ -30,12 +30,13 @@
     "ast-types": "~0.3.5",
     "pegjs": "~0.7.0",
     "esprima": "~1.0.4",
-    "adm-zip": "~0.4.3"
+    "adm-zip": "~0.4.3",
+    "nedb": "~0.8.9"
   },
   "window": {
     "title": "Hyperglot",
     "icon": "link.png",
-    "toolbar": false,
+    "toolbar": true,
     "frame": true,
     "width": 1000,
     "height": 600,
