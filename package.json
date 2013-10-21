@@ -31,7 +31,8 @@
     "pegjs": "~0.7.0",
     "esprima": "~1.0.4",
     "adm-zip": "~0.4.3",
-    "nedb": "~0.8.9"
+    "nedb": "~0.8.9",
+    "temporary": "0.0.7"
   },
   "window": {
     "title": "Hyperglot",

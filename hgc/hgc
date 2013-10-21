@@ -8,7 +8,7 @@ cmd.usage('[options] <file ...>')
    .option('-a, --ast', 'only output the AST of the input (ast.json)')
    .option('-o, --output <filename>', 'specify output filename')
    .option('-O, --optimize', 'enable optimizations via esoptimize')
-   .process(process.argv);
+   .parse(process.argv);
 
 cmd.ast = cmd.ast || false;
 cmd.output = cmd.output || "output.js";
@@ -28,7 +28,7 @@ cmd.args.forEach(function (path, index, args) {
 		console.error(path + " doesn't exist.")
 		process.exit(1);
 	} else {
-		sourceInput = sourceInput + "\n\n" + fs.readFileSync(path, 'utf-8'); 
+		sourceInput = sourceInput + fs.readFileSync(path, 'utf-8'); 
 	}
 })
 

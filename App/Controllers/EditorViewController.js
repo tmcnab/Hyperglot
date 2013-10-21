@@ -151,26 +151,33 @@ var EditorViewController = (function()
 			self.Dismiss();
 		});
 
+		$('#exportPaneBtn').on('click', self.ExportHGC);
+
 		//-- Bind the Window Resize Event --//
 		$(window).resize(resize);
 	};
 
 	self.ExportHGC = function () {
+
+		//-- 
 		if (!buildParser) {
-			alert("Parser didn't build, cannot export hgc");
+			ModalViewController.Alert("Parser didn't build, cannot export hgc");
 			return;
 		} 
 
-		var parserSrc = "module.exports = " + app.grammar.parser.toSource();
-		fs.writeFileSync(process.env.PWD + '/hgc/parser.js', parserSrc);
+		//-- 
+		var cwd = process.cwd();
+		var parserSrc = "module.exports = " + parser.toSource();
+		require('fs').writeFileSync(cwd + '/hgc/parser.js', parserSrc);
 
+		//--
 		var zipFile = new require('adm-zip')();
-		zipFile.addLocalFile(process.env.PWD + '/hgc/package.json');
-		zipFile.addLocalFile(process.env.PWD + '/hgc/hgc');
-		zipFile.addLocalFile(process.env.PWD + '/hgc/parser.js');
+		zipFile.addLocalFile(cwd + '/hgc/package.json');
+		zipFile.addLocalFile(cwd + '/hgc/hgc');
+		zipFile.addLocalFile(cwd + '/hgc/parser.js');
 
 		var homeDir = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
-		zipFile.writeZip(homeDir +  "/hgc-compiler.zip");
+		zipFile.writeZip(homeDir +  "/" + activeDocument.name + ".zip");
 	};
 
 
@@ -180,7 +187,7 @@ var EditorViewController = (function()
 	};
 
 	self.ErrorMsg = function (category, message) {
-		var text = '[' + category + '] ' + message;
+		var text = ' [' + category + '] ' + message;
 		var messageHtml = $('<i>').addClass('icon-warning-sign').text(text);
 		$('#messages').html(messageHtml);
 	};
@@ -198,7 +205,6 @@ var EditorViewController = (function()
 			editors['#grammarEditor'].getSession().setValue(activeDocument.grammar);
 			editors['#languageEditor'].getSession().setValue(activeDocument.language);
 			editors['#decoderPaneLeft'].getSession().setValue(activeDocument.ecmascript);
-
 
 			self.Present();
 		}
