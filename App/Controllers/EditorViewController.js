@@ -30,11 +30,13 @@ var EditorViewController = (function()
 		
 		function reload (name) {
 			editors[name].resize(true);
+			editors[name].focus();
 		}
 
 		switch (name) {
 			case '#editorPane':
-				reload('#grammarEditor'); 
+				reload('#grammarEditor');
+
 				break;
 
 			case '#languagePane':
@@ -47,8 +49,8 @@ var EditorViewController = (function()
 				break;
 
 			case '#decoderPane': 
-				reload('#decoderPaneLeft');
 				reload('#decoderPaneRight');
+				reload('#decoderPaneLeft');
 				break;
 		}
 	}
@@ -246,6 +248,7 @@ var EditorViewController = (function()
 	self.Present = function() {
 		$('#ideView').show();
 		resize();
+		editors['#grammarEditor'].focus();
 	};
 
 	self.Dismiss = function() {
