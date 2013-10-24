@@ -7,7 +7,7 @@ var EditorViewController = (function()
 	var activeDocument = null;
 
 	function activeDocumentChanged() {
-		activeDocument.modified = new Date();
+		activeDocument.updated = new Date();
 		Projects.Update(activeDocument, function (didUpdate) {
 			if (!didUpdate) {
 				self.ErrorMsg('NEDB', 'Failed to update progress.')
