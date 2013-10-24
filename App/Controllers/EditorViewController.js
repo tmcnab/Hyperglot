@@ -22,6 +22,8 @@ var EditorViewController = (function()
 
 	function resize() {
 		for (var sel in editors) {
+			var session = editors[sel].getSession();
+			session.setValue(session.getValue());
 			$(sel).height($(window).height() - 60);
 		}
 	}
@@ -145,6 +147,7 @@ var EditorViewController = (function()
 		$('a[data-toggle="tab"]').click(function (e) {
 			e.preventDefault();
 			$(this).tab('show');
+			resize();	// Throw a resize in here too so it triggers a refresh.
 		});
 
 		$('#ideCloseBtn').on('click', function (evt) {
