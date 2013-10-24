@@ -22,9 +22,34 @@ var EditorViewController = (function()
 
 	function resize() {
 		for (var sel in editors) {
-			var session = editors[sel].getSession();
-			session.setValue(session.getValue());
 			$(sel).height($(window).height() - 60);
+		}
+	}
+
+	function refresh(name) {
+		
+		function reload (name) {
+			editors[name].resize(true);
+		}
+
+		switch (name) {
+			case '#editorPane':
+				reload('#grammarEditor'); 
+				break;
+
+			case '#languagePane':
+				reload('#languageEditor');
+				break;
+
+			case '#outputPane':
+				reload('#outputPaneLeft');
+				reload('#outputPaneRight');
+				break;
+
+			case '#decoderPane': 
+				reload('#decoderPaneLeft');
+				reload('#decoderPaneRight');
+				break;
 		}
 	}
 
@@ -147,7 +172,8 @@ var EditorViewController = (function()
 		$('a[data-toggle="tab"]').click(function (e) {
 			e.preventDefault();
 			$(this).tab('show');
-			resize();	// Throw a resize in here too so it triggers a refresh.
+		}).on('shown.bs.tab', function (e) {
+			refresh($(e.target).data('target'));
 		});
 
 		$('#ideCloseBtn').on('click', function (evt) {

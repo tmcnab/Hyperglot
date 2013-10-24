@@ -36,7 +36,7 @@
   "window": {
     "title": "Hyperglot",
     "icon": "link.png",
-    "toolbar": false,
+    "toolbar": true,
     "frame": true,
     "width": 1000,
     "height": 600,
