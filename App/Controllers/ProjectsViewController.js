@@ -94,7 +94,13 @@ var ProjectsViewController = (function()
 	};
 
 	self.Init = function() {
-		$(npSelector).submit(onSubmit);
+
+		$(npSelector).submit(onSubmit)
+		  .on('shown.bs.modal', function() {
+  			$('[name="npvName"]').focus();
+		}).on('hide.bs.modal',  function() {
+			$('[name="npvName"]').blur();
+		})
 
 		$('#github-commits').githubInfoWidget(
             { user: 'tmcnab', repo: 'Hyperglot', branch: 'master', last: 5, avatarSize: 32 }
