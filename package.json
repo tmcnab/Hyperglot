@@ -1,6 +1,6 @@
 {
   "name": "Hyperglot",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "IDE for formulating programming languages",
   "main": "index.html",
   "directories": {
@@ -36,7 +36,7 @@
   "window": {
     "title": "Hyperglot",
     "icon": "link.png",
-    "toolbar": true,
+    "toolbar": false,
     "frame": true,
     "width": 1000,
     "height": 600,
