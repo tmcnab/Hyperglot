@@ -1,2 +1,4 @@
 .DS_Store
 app.nw
+Vendor
+node_modules
