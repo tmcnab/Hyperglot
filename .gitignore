@@ -1,5 +1,6 @@
 .DS_Store
-app.nw
-Vendor
+
+bower_modules
 node_modules
+
 parser.js

@@ -102,16 +102,6 @@ var ProjectsViewController = (function()
 			$('[name="npvName"]').blur();
 		})
 
-		$('#github-commits').githubInfoWidget(
-            { user: 'tmcnab', repo: 'Hyperglot', branch: 'master', last: 5, avatarSize: 32 }
-        );
-
-        setTimeout(function() {
-        	$('#github-commits').find('a').on('click', function (evt) {
-				evt.preventDefault();
-				require('nw.gui').Shell.openExternal($(this).attr('href'));
-			});
-        }, 3000)
 
         $('#semver').text(VERSION);
 	};
