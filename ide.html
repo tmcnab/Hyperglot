@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>IDE &middot; Project Name</title>
+	<link rel="stylesheet" href="bower_modules/foundation/css/normalize.css" />
+	<link rel="stylesheet" href="bower_modules/foundation/css/foundation.css" />
+	<link rel="stylesheet" href="bower_modules/codemirror/lib/codemirror.css" />
+	<link rel="stylesheet" href="css/ide.css" />
+</head>
+<body>
+	<div class="off-canvas-wrap">
+		<div class="inner-wrap">
+			<div class="fixed">
+			<nav class="tab-bar">
+				<section class="left-small">
+					<a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+				</section>
+
+				<section class="middle tab-bar-section">
+					<span class="title -menu-title"></span>
+				</section>
+
+				<section class="right">
+					<span class="-menu-message"></span>
+				</section>
+			</nav>
+			</div>
+
+			<aside class="left-off-canvas-menu">
+				<ul class="off-canvas-list">
+					<li><label>Project</label></li>
+					<li><a href="#GrammarView">Grammar         <span class="kbdsc -proj-peg"></span></a></li>
+					<li><a href="#ConfigView">Configuration    <span class="kbdsc -proj-cfg"></span></a></li>
+					<li><a href="#TestsView">Unit Tests        <span class="kbdsc -proj-tst"></span></a></li>
+					<li><a href="#DocView">Documentation       <span class="kbdsc -proj-doc"></span></a></li>
+					<li><a href="#OutputView">Output           <span class="kbdsc -proj-out"></span></a></li>
+					
+					<li><label>Tools</label></li>
+					<li><a href="#DecoderView">Decode JS        <span class="kbdsc -tool-jsd"></span></a></li>
+					<li><a href="#CompilerView">Export Compiler <span class="kbdsc -tool-exc"></span></a></li>
+					<li><a href="#NotesView">Notes              <span class="kbdsc -tool-not"></span></a></li>
+					
+					<li><label>Documentation</label></li>
+					<li><a href="#DocsHGView">Hyperglot        <span class="kbdsc -docs-hgc"></span></a></li>
+					<li><a href="#DocsPEGView">PEG.JS        <span class="kbdsc -docs-pjs"></span></a></li>
+					<li><a href="#DocsASTView">AST Nodes       <span class="kbdsc -docs-ast"></span></a></li>
+				</ul>
+			</aside>
+
+			<section class="main-section" id="contentContainer">
+			</section>
+
+			<a class="exit-off-canvas"></a>
+		</div>
+	</div>
+
+	<script src="bower_modules/jquery/jquery.min.js"></script>
+	<script src="bower_modules/foundation/js/foundation.min.js"></script>
+	<script src="bower_modules/riotjs/jquery.riot.min.js"></script>
+	<script src="bower_modules/riotjs/ext/render.js"></script>
+	<script src="bower_modules/codemirror/lib/codemirror.js"></script>
+
+	<script>$(document).foundation();</script>
+	<script src="js/Menu.js"></script>
+	<script src="js/IDE.js"></script>
+</body>
+</html>

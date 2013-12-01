@@ -1,45 +1,35 @@
 {
   "name": "Hyperglot",
-  "version": "0.1.2",
-  "description": "IDE for formulating programming languages",
-  "main": "index.html",
-  "directories": {
-    "test": "test"
+  "version": "0.2.0",
+  "description": "A compiler creation studio",
+  "main": "ide.html",
+  "dependencies": {
+    "ast-types": "~0.3.10",
+    "escodegen": "~1.0.0",
+    "esprima": "~1.0.4",
+    "nedb": "~0.8.12",
+    "pegjs": "~0.7.0"
   },
+  "devDependencies": {},
   "scripts": {
     "test": "test"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:tmcnab/Hyperglot.git"
+    "url": "git://github.com/tmcnab/Hyperglot.git"
   },
-  "keywords": [
-    "PEG",
-    "grammar",
-    "compiler",
-    "generator",
-    "IDE"
-  ],
-  "author": "@tmcnab <tristan.j.mcnab@gmail.com>",
-  "license": "Modified MIT <https://github.com/tmcnab/Hyperglot/blob/master/LICENSE>",
+  "author": "Tristan McNab <tristan.j.mcnab@gmail.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/tmcnab/Hyperglot/issues"
   },
-  "dependencies": {
-    "escodegen": "0.0.27",
-    "ast-types": "~0.3.5",
-    "pegjs": "~0.7.0",
-    "esprima": "~1.0.4",
-    "adm-zip": "~0.4.3",
-    "nedb": "~0.8.9"
-  },
+  "homepage": "https://github.com/tmcnab/Hyperglot",
   "window": {
     "title": "Hyperglot",
-    "icon": "link.png",
-    "toolbar": false,
+    "toolbar": true,
     "frame": true,
-    "width": 1000,
-    "height": 600,
+    "width": 1300,
+    "height": 700,
     "position": "mouse",
     "min_width": 1000,
     "min_height": 600

@@ -1,186 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>Hyperglot</title>
-	<link rel="stylesheet" href="bower_modules/bootswatch/cyborg/bootstrap.min.css" />
-	<link rel="stylesheet" href="bower_modules/font-awesome/css/font-awesome.min.css" />
-	<link rel="stylesheet" href="app/style.css" />
-
-	<!-- Support Scripts -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link  href="bower_modules/foundation/css/foundation.min.css" rel="stylesheet" />
 	<script src="bower_modules/jquery/jquery.min.js"></script>
-	<script src="bower_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="bower_modules/ace/build/src-noconflict/ace.js"></script>
-	<script src="bower_modules/momentjs/moment.js"></script>
-	<script>var VERSION = "0.1.2";</script>
-
-	<!-- Model Related -->
-	<script src="app/Models/Project.js"></script>
-	<script src="app/Models/Projects.js"></script>
-	<script src="app/Models/Settings.js"></script>
-
-	<!-- View Controllers -->
-	<script src="app/Controllers/ModalViewController.js"></script>
-	<script src="app/Controllers/ProjectsViewController.js"></script>
-	<script src="app/Controllers/EditorViewController.js"></script>
-
-	<!-- Main -->
-	<script src="app/main.js"></script>
+	<script src="bower_modules/riotjs/riot.min.js"></script>
 </head>
 <body>
-	
-	<div id="landingView" class="container" style="display:none">
-		<header class="page-header">
-			<h1>Hyperglot <small>A Language Experimentation Platform (<span id="semver"></span>)</small></h1>
-		</header>
-		<div class="row">
-			<div class="col-md-6">
-				<h3>Projects</h3>
-				<table id="projectList" class="table">
-					<thead>
-						<tr><td colspan="2">
-							<a data-toggle="modal" data-target="#newProjectView">New Project &hellip;</a>
-						</td></tr>
-					</thead>
-					<tbody></tbody>
-				</table>
-			</div>
-			<div class="col-md-5 col-md-offset-1">
-				<h3>Info</h3>
-				
-			</div>
-		</div>
-	</div>
-
-	<div id="ideView" style="display:none">
-		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-			<ul class="nav navbar-nav">
-				<li class="active">
-					<a data-toggle="tab" data-target="#editorPane">Syntax</a></li>
-				<li><a data-toggle="tab" data-target="#languagePane">Input</a></li>
-				<li><a data-toggle="tab" data-target="#outputPane">Output</a></li>
-				<li><a data-toggle="tab" data-target="#exportPane">Export</a></li>
-				<li><a data-toggle="tab" data-target="#decoderPane">Decode</a></li>
-				<li><a data-toggle="tab" data-target="#settingsPane">Settings</a></li>
-			</ul>
-			<button id="ideCloseBtn" class="btn btn-default btn-xs pull-right navbar-btn">close</button>
-		</nav>
-		<div class="tab-content">
-			<section class="tab-pane active" id="editorPane">
-				<div id="grammarEditor"></div>
-			</section>
-			<section class="tab-pane" id="languagePane">
-				<div id="languageEditor"></div>
-			</section>
-			<section class="tab-pane" id="outputPane">
-				<div class="row">
-					<div class="col-md-6">
-						<div id="outputPaneLeft"></div>
-					</div>
-					<div class="col-md-6">
-						<div id="outputPaneRight"></div>
-					</div>
-				</div>
-			</section>
-			<section class="tab-pane" id="decoderPane">
-				<div class="row">
-					<div class="col-md-6">
-						<div id="decoderPaneLeft"></div>
-					</div>
-					<div class="col-md-6">
-						<div id="decoderPaneRight"></div>
-					</div>
-				</div>
-			</section>
-			<section class="tab-pane" id="exportPane">
-			<div class="row">
-					<div class="col-md-6 col-md-offset-3">
-						<div class="panel panel-primary" style="margin-top:100px">
-							<div class="panel-heading">
-								<h3 class="panel-title">Compiler Creation</h3>
-							</div>
-							<div class="panel-body">
-								<p>The button below will create your compiler archive <span id="exportPanePath">'~/hgc-compiler.zip'</span>. After you unzip it, run 'npm install' to install the necessary dependencies.</p>
-								<p>Don't fret, there will be more options in the future.</p>
-								<hr />
-								<div class="text-center">
-									<button id="exportPaneBtn" class="btn btn-large btn-default">Create Compiler</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="tab-pane" id="settingsPane" style="padding:20px">
-				<div style="text-align:center; padding-top:200px">
-					<p class="lead">Coming Soon</p>
-				</div>
-			</section>
-		</div>
-		<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
-			<small class="navbar-text" id="messages">Ready.</small>
-		</nav>
-	</div>
-	
-	<!-- Modal Views -->
-
-	<form id="newProjectView" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">New Project</h4>
-				</div>
-				<div class="modal-body">
-					<div class="form-group">
-						<input type="text" class="form-control" name="npvName" placeholder="Project Name (required)" required />
-					</div>
-				</div>
-				<div class="modal-footer">
-					<div class="btn-group btn-group-justified">
-						<style scoped>button { width: 50%; }</style>
-						<button type="submit" class="btn btn-primary">Create</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</form>
-
-	<div id="singleButtonModalView" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title"></h4>
-				</div>
-				<div class="modal-body">
-					<p></p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default btn-block">Okay</button>
-				</div>
-			</div>
-		</div>
-	</div>	
-
-	<div id="confirmModalView" class="modal fade" data-backdrop="static" data-keyboard="false">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Confirm</h4>
-				</div>
-				<div class="modal-body">
-					<p>&nbsp;</p>
-				</div>
-				<div class="modal-footer">
-					<div class="btn-group btn-group-justified">
-						<style scoped>button { width: 50%; }</style>
-						<button id="cMVYesBtn" type="button" class="btn btn-primary">Confirm</button>
-						<button id="cMVNoBtn" type="button" class="btn btn-default">Deny</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
+	<main>
+		
+	</main>
+	<script type="text/javascript" defer>
+		var gui = require('nw.gui');
+		var mainwin = gui.Window.get();
+        //var newpopup = gui.Window.open('ide.html', 'Test Popup');
+        $('#manifest-version').text(gui.App.manifest.version)
+	</script>
 </body>
 </html>

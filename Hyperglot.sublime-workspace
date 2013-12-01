@@ -1,0 +1,317 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"sel",
+				"self"
+			],
+			[
+				"pro",
+				"project"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"Notes",
+				"NotesView"
+			],
+			[
+				"AS",
+				"ASTDocsView"
+			],
+			[
+				"load",
+				"loadHtml"
+			],
+			[
+				"rout",
+				"routes"
+			],
+			[
+				"ini",
+				"initKbdCommands"
+			],
+			[
+				"off-c",
+				"off-canvas-wrap"
+			],
+			[
+				"Gramm",
+				"GrammarView"
+			],
+			[
+				"riot",
+				"riotjs"
+			],
+			[
+				"bo",
+				"bower_modules"
+			],
+			[
+				"main",
+				"manifest"
+			],
+			[
+				"man",
+				"manifest"
+			],
+			[
+				"mani",
+				"manifest-version"
+			],
+			[
+				"op",
+				"option	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "ide.html",
+			"settings":
+			{
+				"buffer_size": 2692,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/ide.js",
+			"settings":
+			{
+				"buffer_size": 1436,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/node-webkit.sublime-build",
+	"command_palette":
+	{
+		"height": 47.0,
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/tmcnab/Development/Hyperglot/js/ide/main.js",
+		"/Users/tmcnab/Development/Hyperglot/ide/NotesView.html",
+		"/Users/tmcnab/Development/Hyperglot/ide/ASTDocsView.html",
+		"/Users/tmcnab/Development/Hyperglot/ide/PEGJSDocsView.html",
+		"/Users/tmcnab/Development/Hyperglot/ide/HyperglotDocsView.html",
+		"/Users/tmcnab/Development/Hyperglot/js/main.js",
+		"/Users/tmcnab/Development/Hyperglot/js/ide.js",
+		"/Users/tmcnab/Development/Hyperglot/css/ide.css",
+		"/Users/tmcnab/Development/Hyperglot/package.json",
+		"/Users/tmcnab/Development/Hyperglot/index.html",
+		"/Users/tmcnab/Development/Hyperglot/App/Controllers/ProjectsViewController.js",
+		"/Users/tmcnab/Development/Hyperglot/App/Controllers/EditorViewController.js",
+		"/Users/tmcnab/Development/Hyperglot/.gitignore",
+		"/Users/tmcnab/Development/Hyperglot/bower.json",
+		"/Users/tmcnab/Development/Hyperglot/.bowerrc",
+		"/Users/tmcnab/Development/Hyperglot/node-webkit.sublime-build",
+		"/Users/tmcnab/Library/Application Support/Sublime Text 3/Packages/User/node-webkit.sublime-build"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "ide.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2692,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2662,
+								2662
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 246.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/ide.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1436,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1056,
+								981
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 357.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"project": "Hyperglot.sublime-project",
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 231.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

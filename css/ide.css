@@ -1,0 +1,31 @@
+html, body, 
+.off-canvas-wrap, 
+.inner-wrap, 
+.main-section, 
+.CodeMirror {
+	height: 100%;
+	min-height: 100%;
+	max-height: 100%;
+}
+
+.kbdsc {
+	float: right;
+}
+
+.tab-bar {
+	position: absolute;
+	top: 0;
+}
+
+.Editor-Wrapper {
+	height:100%; 
+	padding-top:45px;
+}
+
+.CodeMirror {
+	height: 100%;
+}
+
+.CodeMirror-scroll {
+	overflow-y: hidden;
+}
