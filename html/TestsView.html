@@ -1,1 +1,36 @@
-Tests View
+<table class="-tests-table">
+	<thead>
+		<tr>
+			<th>Status</th>
+			<th>Name</th>
+			<th>Kind</th>
+			<th><a class="-tests-action-add">Add Test</a>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr><td colspan="4" style="text-align:center">You have not created any unit tests.</td></tr>
+	</tbody>
+</table>
+<form class="reveal-modal -tests-modal-add" data-reveal>
+	<a class="close-reveal-modal">&#215;</a>
+  	<div class="row">
+  		<div class="large-4 columns">
+  			<label>Name</label>
+      		<input name="name" type="text" placeholder="Test Name" required />
+      		
+      		<label>Description</label>
+      		<textarea name="desc" placeholder="You can describe your tests here." class="-tests-modal-add-desc"></textarea>
+      		
+      		<label>Evaluation Mode</label>
+      		<select name="mode" required>
+        		<option value="rb">Returns Boolean</option>
+        		<option value="te">Throws Exception</option>
+      		</select>
+      		
+      		<button type="submit" class="button small">Add Test</button>
+  		</div>
+  		<div class="large-8 columns -tests-modal-add-code">
+  		</div>
+  	</div>
+</form>

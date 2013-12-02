@@ -1,3 +1,7 @@
+@import url("../bower_modules/foundation/css/normalize.css");
+@import url("../bower_modules/foundation/css/foundation.css");
+@import url("../bower_modules/codemirror/lib/codemirror.css");
+
 html, body, 
 .off-canvas-wrap, 
 .inner-wrap, 
@@ -29,3 +33,43 @@ html, body,
 .CodeMirror-scroll {
 	overflow-y: hidden;
 }
+
+.-menu-message {
+	text-align: right;
+	padding-right: 20px;
+}
+
+.-tests-table {
+	margin-top: 45px; 
+	width: 100%
+}
+
+.-tests-action-add {
+	margin-bottom: 0;
+	float: right;
+}
+
+.-tests-modal-add-code {
+	height: 450px;
+}
+
+.-tests-modal-add-desc {
+	height: 200px;
+	resize: none;
+}
+
+.full-height {
+	height: 100%;
+}
+
+
+.-decoder-input-editor, 
+.-decoder-output-editor {
+	width: 49%;
+	display: inline-block;
+}
+
+
+
+
+

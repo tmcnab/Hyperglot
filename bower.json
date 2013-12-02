@@ -26,6 +26,7 @@
   "dependencies": {
     "riotjs": "~0.9.5",
     "foundation": "~5.0.2",
-    "codemirror": "~3.20.0"
+    "codemirror": "~3.20.0",
+    "list.js": "~1.0.0"
   }
 }

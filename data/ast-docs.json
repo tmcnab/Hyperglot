@@ -1,0 +1,3 @@
+[
+	{ "name":"Program", "spec":"interface Program <: Node {\ntype: \"Program\";\nbody: [ Statement ];\n}", "desc":"A complete program source tree." }
+]
