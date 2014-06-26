@@ -1,0 +1,23 @@
+[data-view] {
+    cursor: pointer;
+}
+
+.editor {
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    display: inline-block;
+}
+
+.half {
+    width: 49%;
+}
+
+.third {
+    width: 33%;
+}
+
+
+nav.navbar {
+    margin-bottom: 0;
+}

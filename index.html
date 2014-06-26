@@ -1,152 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="chrome=1">
-		<title>Hyperglot &middot; A Language Experimentation Platform</title>
-		<link rel="stylesheet" href="stylesheets/styles.css">
-		<link rel="stylesheet" href="stylesheets/pygment_trac.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script src="javascripts/respond.js"></script>
-		<!--[if lt IE 9]>
-		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<!--[if lt IE 8]>
-		<link rel="stylesheet" href="stylesheets/ie.css">
-		<![endif]-->
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>HyperglotNext &middot; An Online Language Experimentation Platform</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.1.1-1/css/yeti/bootstrap.min.css">
+	<link rel="stylesheet" href="custom.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/pegjs/0.7.0/peg.min.js"></script>
 </head>
 <body>
-	<div class="wrapper"><section>
-		<div id="title">
-			<h1>Hyperglot</h1>
-			<p></p>
-			<h2>A Language Experimentation Platform</h2>
-			<iframe src="http://ghbtns.com/github-btn.html?user=tmcnab&repo=Hyperglot&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" height="20px"></iframe>
-			<a href="https://codeclimate.com/github/tmcnab/Hyperglot" style="float:right">
-				<img src="https://codeclimate.com/github/tmcnab/Hyperglot.png" />
-			</a>
-			<hr>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<span class="navbar-brand" data-toggle="tab" data-target="#landing">HyperglotNext</a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a data-toggle="tab" data-target="#grammar">Grammar</a></li>
+					<li><a data-toggle="tab" data-target="#testing">Testing</a></li>
+					<li><a data-toggle="tab" data-target="#decoding">Decoding</a></li>
+					<li><a data-toggle="tab" data-target="#export">Export</a></li>
+					<li><a data-toggle="tab" data-target="#documentation">Documentation</a></li>
+				</ul>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="https://github.com/tmcnab/Hyperglot">GitHub &raquo;</a>
+					</li>
+				</ul>
+			</div>
 		</div>
-
-
-
-		<dl id="overview" style="float:left; margin-right:20px;">
-			<dt>Documentation</dt>
-			<dd><a href="#projects">Projects</a></dd>
-			<dd><a href="#syntaxPane">Syntax</a></dd>
-			<dd><a href="#inputPane">Input</a></dd>
-			<dd><a href="#outputPane">Output</a></dd>
-			<dd><a href="#decodePane">Decode</a></dd>
-			<dd><a href="#exportPane">Export</a></dd>
-			<dt>More</dt>
-			<dd><a href="#getInvolved">Get Involved</a></dd>
-			<dd><a href="#credits">Credits</a></dd>
-			<dd><a href="#license">License</a></dd>
-		</dl>
-		<p>Hyperglot aims to speed up the way you create and develop programming languages or DSLs. You specify a PEG grammar using Spidermonkey AST primitives and you get a compiler back. Simple as that.</p>
-		<p>To run a <a href="https://github.com/tmcnab/Hyperglot/releases">release</a> of Hyperglot, you will need to have a <a href="https://github.com/rogerwang/node-webkit/releases">node-webkit binary</a>.</p>
-		
-		
-		<p style="clear:both;"></p>
-		<hr>
-
-		<h3 id="projects">Projects</h3>
-		<img src="images/Projects.png" />
-		<p>This is the view presented to you when you launch Hyperglot.</p>
-		<p>On the left you have projects you have created. These will be ordered on the basis of most recently modified. To remove a project, simply click the cross to the right of it's name.</p>
-		<p>On the right you have the most recent commits to the public repository. Selecting any of these commits will open your browser with said commit info.</p>
-
-		<p style="text-align:center"><a href="#overview">Overview</a></p>
-		<hr>
-
-
-		<h3 id="syntaxPane">Syntax Pane</h3>
-		<img src="images/Syntax.png" />
-		<p>The syntax pane is where you specify the grammar of your language. It is based around <a href="http://majda.cz/en/">David Majda's</a> excellent <a href="http://pegjs.majda.cz/">PEG.js</a>, a parser generator. For the syntax of PEG.js, please read it's <a href="http://pegjs.majda.cz/documentation">documentation</a>.
-		<p>PEG.js is great, but to shortcut the time it takes to get a <abbr title="Abstract Syntax Tree">AST</abbr> up and going, you can access a variable called <code>ast</code> with node type functions as properties. This object follows the <a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/Parser_API#Builder_objects">Mozilla Spidermonkey Parser API</a>. 
-
-		<p>As an example, take the following syntax which specifies an Identifier node:</p>
-		<pre>
-Identifier = c:[A-Za-z]+ {
-    return ast.identifier(c.join(''));
-}</pre>
-	<p>During the writing of your grammar, the bottom bar will notify you of any errors generated by PEG.js. It will also tell you when your parser has been created.</p>
-	<p style="text-align:center"><a href="#overview">Overview</a></p>
-	<hr>
-
-
-	<h3 id="inputPane">Input Pane</h3>
-	<img src="images/Input.png" />
-	<p>The input pane is where you write the source code of your language. If your parser was successfully generated using the <a href="#syntaxPane">Syntax pane</a>, any source language you input into the editor will be parsed by the parser you generated. If the source was successfully parsed the lower status message area will tell you so, and you should move to the <a href="#outputPane">Output Pane</a>. If it failed to parse, you will be told so.</p>
-	<p style="text-align:center"><a href="#overview">Overview</a></p>
-	<hr>
-
-
-
-	<h3 id="outputPane">Output Pane</h3>
-	<img src="images/Output.png" />
-	<p>If your custom language was parsed successfully, the AST will appear on the left. If you used the right combination of AST nodes in your tree, <a href="#">Escodegen</a> will have successfully transformed your AST into EcmaScript. Congratulations, you've built a language!</p>
-	<p>If for some reason it didn't generate source for your input source language, then it's because the wrong types of expressions / statements were used and you need to rework your AST.</p>
-	<p style="text-align:center"><a href="#overview">Overview</a></p>
-	<hr>
-
-
-
-	<h3 id="decodePane">Decode Pane</h3>
-	<img src="images/Decode.png" />
-	<p>In the decode pane you can input some EcmaScript and get the AST representation of the code you input thanks to <a href="http://esprima.org">Esprima</a>. Good for determining what kind of AST a particular feature of your lanugage might need to emit.</p>
-	<p style="text-align:center"><a href="#overview">Overview</a></p>
-	<hr>
-
-
-
-	<h3 id="exportPane">Export Pane</h3>
-	<img src="images/Export.png" />
-	<p>The export pane turns your PEG into a fully-fledged compiler using the very tools used by Hyperglot. Right now it's a proof-of-concept with just the basic functionality. For more details, generate a compiler and look at the source of <code>hgc</code></p>
-	<p style="text-align:center"><a href="#overview">Overview</a></p>
-	<hr>	
-
-
-
-	<h3 id="getInvolved">Get Involved</h3>
-	<p>If you have feedback, please create a new <a href="https://github.com/tmcnab/Hyperglot/issues/new">Issue on GitHub</a> or review <a href="https://github.com/tmcnab/Hyperglot/issues">existing issues</a>. Pull requests are welcome.</p>
-	<p style="text-align:center"><a href="#overview">Overview</a></p>
-	<hr>
-
-
-
-	<h3 id="credits">Credits</h3>
-	<p>Without the following libraries and projects, Hyperglot would not be possible:</p>
-	<ul>
-		<li><a href="https://github.com/ajaxorg/ace">ace</a> {<a href="https://github.com/ajaxorg/ace/blob/master/LICENSE">BSD</a>}</li>
-		<li><a href="https://github.com/cthackers/adm-zip">adm-zip</a> {<a href="https://github.com/cthackers/adm-zip/blob/master/MIT-LICENSE.txt">MIT</a>}</li>
-		<li><a href="https://github.com/benjamn/ast-types">ast-types</a> {<a href="https://github.com/benjamn/ast-types/blob/master/LICENSE">MIT</a>}</li>
-		<li><a href="https://github.com/twbs/bootstrap">bootstrap</a> {<a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">Apache 2</a>}</li>
-		<li><a href="http://bootswatch.com/cyborg/">bootswatch-cyborg</a> {<a href="https://github.com/thomaspark/bootswatch/blob/gh-pages/LICENSE">Apache 2</a>}</li>
-		<li><a href="https://github.com/Constellation/escodegen">escodegen</a> {<a href="https://github.com/Constellation/escodegen/blob/master/LICENSE.BSD">BSD</a>}</li>
-		<li><a href="https://github.com/ariya/esprima">esprima</a> {<a href="https://github.com/ariya/esprima/blob/master/LICENSE.BSD">BSD</a>}</li>
-		<li><a href="https://github.com/louischatriot/nedb/">NeDB</a> {<a href="https://github.com/louischatriot/nedb/blob/master/README.md#license">MIT</a>}</li>
-		<li><a href="https://github.com/rogerwang/node-webkit">node-webkit</a> {<a href="https://github.com/rogerwang/node-webkit/blob/master/LICENSE">MIT</a>}</li>
-		<li><a href="https://github.com/dmajda/pegjs">pegjs</a> {<a href="https://github.com/dmajda/pegjs/blob/master/LICENSE">MIT</a>}</li>
-		<li><a href="https://github.com/mattgraham/Midnight">Midnight</a> {<a href="http://creativecommons.org/licenses/by/3.0/legalcode">CC-BY-3.0</a>}</li>
-	</ul>
-	<p style="text-align:center"><a href="#overview">Overview</a></p>
-	<hr>
-
-
-	<h3 id="license">License</h3>
-	<p>The Modified MIT License (MIT)</p>
-	<p>Copyright (c) 2013 Tristan McNab (@tmcnab)</p>
-	<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without limitation the rights to use, copy, modify, merge, publish, and distribute, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-	<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-	<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-	<br>
-	<p><strong>Note</strong>: the above is a modified MIT licence. Changes are that you can't sell or relicence Hyperglot. Everything else is fine though!</p>
-	<p style="text-align:center"><a href="#overview">Overview</a></p>
-
-	
-</section></div>
-<!--[if !IE]><script>fixScale(document);</script><![endif]-->
+	</nav>
+	<nav class="navbar navbar-inverse" role="navigation">
+		<div class="container-fluid">
+			<p id="messages" class="navbar-text"></p>
+		</div>
+	</nav>
+	<div class="tab-content">
+		<section class="tab-pane active" id="landing">
+			Landing Page
+		</section>
+		<section class="tab-pane" id="grammar">
+			<div id="ed-grammar" class="editor"></div>
+		</section>
+		<section class="tab-pane" id="testing">
+			<div id="ed-test-in" class="editor third"></div>
+			<div id="ed-test-tree" class="editor third"></div>
+			<div id="ed-test-out" class="editor third"></div>
+		</section>
+		<section class="tab-pane" id="decoding">
+			<div id="ed-decode-input" class="editor half"></div>
+			<div id="ed-decode-output" class="editor half"></div>
+		</section>
+		<section class="tab-pane" id="export">
+			Export
+		</section>
+		<section class="tab-pane" id="documentation">
+			Documentation
+		</section>
+	</div>
+	<script src="Application.js"></script>
 </body>
 </html>
